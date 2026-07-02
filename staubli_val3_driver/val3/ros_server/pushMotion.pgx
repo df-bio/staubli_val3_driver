@@ -32,7 +32,7 @@
       l_mTrajPt.nSequence=rosTrajPtMsg.jointTrajPt.nSeq
 
       // ROS positions are SI units; convert to controller-native units
-      // (j1..j3: rad->deg, j4: m->mm)
+      // (j1,j2,j4: rad->deg, j3: m->mm)
       call toJointDeg(rosTrajPtMsg.jointTrajPt.nJoints, l_mTrajPt.jJoint)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp
@@ -49,7 +49,7 @@
       l_mTrajPt.nDuration=rosTrajPtFMsg.jointTrajPtFull.nTime
 
       // ROS positions are SI units; convert to controller-native units
-      // (j1..j3: rad->deg, j4: m->mm)
+      // (j1,j2,j4: rad->deg, j3: m->mm)
       call toJointDeg(rosTrajPtFMsg.jointTrajPtFull.nPositions, l_mTrajPt.jJoint)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp

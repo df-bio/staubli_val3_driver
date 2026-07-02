@@ -7,7 +7,7 @@
 
   <!-- put them on the parameter server -->
   <param name="robot_ip_address" type="str" value="$(arg robot_ip)" />
-  <rosparam param="controller_joint_names">[revo1, revo2, revo3, prism4]</rosparam>
+  <rosparam param="controller_joint_names">[revo1, revo2, prism3, revo4]</rosparam>
 
   <!-- reuse generic industrial robot client state node -->
   <node pkg="industrial_robot_client" type="robot_state" name="robot_state" />

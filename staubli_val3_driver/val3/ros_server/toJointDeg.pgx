@@ -43,12 +43,12 @@
   l_nRad2Deg = 57.2957795131
   l_nM2Mm = 1000
 
-  // RS60/RS-TS-safe mapping: first three axes are revolute (rad->deg),
-  // fourth axis is linear (m->mm).
+  // RS60 mapping: j1, j2, j4 are revolute (rad->deg),
+  // j3 is prismatic (m->mm).
   x_jJoint.j1 = x_nJointArray[0] * l_nRad2Deg
   x_jJoint.j2 = x_nJointArray[1] * l_nRad2Deg
-  x_jJoint.j3 = x_nJointArray[2] * l_nRad2Deg
-  x_jJoint.j4 = x_nJointArray[3] * l_nM2Mm
+  x_jJoint.j3 = x_nJointArray[2] * l_nM2Mm
+  x_jJoint.j4 = x_nJointArray[3] * l_nRad2Deg
 end]]></Code>
   </Program>
 </Programs>
