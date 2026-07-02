@@ -40,14 +40,14 @@
 
 
   l_nDeg2Rad = 0.01745329251
-  
-  // assuming the remaining elements (6-9) have zeros assigned by default
+
+  // RS60/RS-TS-safe mapping: only first four joints are available.
   x_nJointArray[0] = x_jJoint.j1 * l_nDeg2Rad
   x_nJointArray[1] = x_jJoint.j2 * l_nDeg2Rad
   x_nJointArray[2] = x_jJoint.j3 * l_nDeg2Rad
   x_nJointArray[3] = x_jJoint.j4 * l_nDeg2Rad
-  x_nJointArray[4] = x_jJoint.j5 * l_nDeg2Rad
-  x_nJointArray[5] = x_jJoint.j6 * l_nDeg2Rad
+  x_nJointArray[4] = 0
+  x_nJointArray[5] = 0
 end]]></Code>
   </Program>
 </Programs>
