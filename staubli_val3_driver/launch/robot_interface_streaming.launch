@@ -21,7 +21,7 @@
   <!-- copy the specified parameters to the Parameter Server, for
        use by nodes below -->
   <param name="robot_ip_address" type="str" value="$(arg robot_ip)" />
-  <rosparam param="controller_joint_names">[joint1, joint2, joint3, joint4]</rosparam>
+  <rosparam param="controller_joint_names">[revo1, revo2, revo3, prism4]</rosparam>
 
   <!-- robot_state: publishes joint positions and robot-state data
        (from socket connection to robot)
