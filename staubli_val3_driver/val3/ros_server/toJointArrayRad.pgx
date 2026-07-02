@@ -20,6 +20,7 @@
     </Parameters>
     <Locals>
       <Local name="l_nDeg2Rad" type="num" xsi:type="array" size="1" />
+      <Local name="l_nMm2M" type="num" xsi:type="array" size="1" />
     </Locals>
     <Code
         ><![CDATA[begin
@@ -40,12 +41,14 @@
 
 
   l_nDeg2Rad = 0.01745329251
+  l_nMm2M = 0.001
 
-  // RS60/RS-TS-safe mapping: only first four joints are available.
+  // RS60/RS-TS-safe mapping: first three axes are revolute (deg->rad),
+  // fourth axis is linear (mm->m).
   x_nJointArray[0] = x_jJoint.j1 * l_nDeg2Rad
   x_nJointArray[1] = x_jJoint.j2 * l_nDeg2Rad
   x_nJointArray[2] = x_jJoint.j3 * l_nDeg2Rad
-  x_nJointArray[3] = x_jJoint.j4 * l_nDeg2Rad
+  x_nJointArray[3] = x_jJoint.j4 * l_nMm2M
   x_nJointArray[4] = 0
   x_nJointArray[5] = 0
 end]]></Code>

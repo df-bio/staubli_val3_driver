@@ -31,7 +31,8 @@
     case nStdMsgType["JOINT_TRAJ_PT"]
       l_mTrajPt.nSequence=rosTrajPtMsg.jointTrajPt.nSeq
 
-      // ROS joint position values are in rad, but VAL3 uses degrees
+      // ROS positions are SI units; convert to controller-native units
+      // (j1..j3: rad->deg, j4: m->mm)
       call toJointRxDeg(rosTrajPtMsg.jointTrajPt.nJoints, l_mTrajPt.jJointRx)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp
@@ -47,7 +48,8 @@
       l_mTrajPt.nSequence=rosTrajPtFMsg.jointTrajPtFull.nSeq
       l_mTrajPt.nDuration=rosTrajPtFMsg.jointTrajPtFull.nTime
 
-      // ROS joint position values are in rad, but VAL3 uses degrees
+      // ROS positions are SI units; convert to controller-native units
+      // (j1..j3: rad->deg, j4: m->mm)
       call toJointRxDeg(rosTrajPtFMsg.jointTrajPtFull.nPositions, l_mTrajPt.jJointRx)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp

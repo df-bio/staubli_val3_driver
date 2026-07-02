@@ -7,6 +7,7 @@
     </Parameters>
     <Locals>
       <Local name="l_nRad2Deg" type="num" xsi:type="array" size="1" />
+      <Local name="l_nM2Mm" type="num" xsi:type="array" size="1" />
     </Locals>
     <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
@@ -26,13 +27,16 @@
 
 
   l_nRad2Deg = 57.2957795131
+  l_nM2Mm = 1000
   
+  // RS60/RS-TS-safe mapping: first three axes are revolute (rad->deg),
+  // fourth axis is linear (m->mm).
   x_jJointRx.j1 = x_nJointArray[0] * l_nRad2Deg
   x_jJointRx.j2 = x_nJointArray[1] * l_nRad2Deg
   x_jJointRx.j3 = x_nJointArray[2] * l_nRad2Deg
-  x_jJointRx.j4 = x_nJointArray[3] * l_nRad2Deg
-  x_jJointRx.j5 = x_nJointArray[4] * l_nRad2Deg
-  x_jJointRx.j6 = x_nJointArray[5] * l_nRad2Deg
+  x_jJointRx.j4 = x_nJointArray[3] * l_nM2Mm
+  x_jJointRx.j5 = 0
+  x_jJointRx.j6 = 0
 end]]></Code>
   </Program>
 </Programs>
