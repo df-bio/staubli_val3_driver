@@ -33,7 +33,7 @@
 
       // ROS positions are SI units; convert to controller-native units
       // (j1..j3: rad->deg, j4: m->mm)
-      call toJointRxDeg(rosTrajPtMsg.jointTrajPt.nJoints, l_mTrajPt.jJointRx)
+      call toJointDeg(rosTrajPtMsg.jointTrajPt.nJoints, l_mTrajPt.jJoint)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp
       // JointTrajectoryInterface::trajectory_to_msgs()
@@ -50,7 +50,7 @@
 
       // ROS positions are SI units; convert to controller-native units
       // (j1..j3: rad->deg, j4: m->mm)
-      call toJointRxDeg(rosTrajPtFMsg.jointTrajPtFull.nPositions, l_mTrajPt.jJointRx)
+      call toJointDeg(rosTrajPtFMsg.jointTrajPtFull.nPositions, l_mTrajPt.jJoint)
 
       // from industrial_robot_client/src/joint_trajectory_interface.cpp
       // JointTrajectoryInterface::trajectory_to_msgs()
@@ -82,7 +82,7 @@
     // only push motion into buffer if not a STOP message
     // and if joint positions are within software joint limits
     // and if velocity is greater than zero (beucase movej() will not accept vel <= 0)
-    if(isInRange(l_mTrajPt.jJointRx) and l_mTrajPt.mDesc.vel > 0)
+    if(isInRange(l_mTrajPt.jJoint) and l_mTrajPt.mDesc.vel > 0)
       call libQueueFuncs:push(qTrajPtBuffer,l_mTrajPt,l_bOk)
     else
       l_bOk = false

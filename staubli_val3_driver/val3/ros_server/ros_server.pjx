@@ -33,7 +33,7 @@
     <Program file="start.pgx" />
     <Program file="stop.pgx" />
     <Program file="toJointArrayRad.pgx" />
-    <Program file="toJointRxDeg.pgx" />
+    <Program file="toJointDeg.pgx" />
   </Programs>
   <Database>
     <Data file="ros_server.dtx" />
