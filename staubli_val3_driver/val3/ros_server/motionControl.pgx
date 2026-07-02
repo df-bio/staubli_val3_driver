@@ -62,7 +62,7 @@
           // Checking for dist(l_motion, herej()) (pseudo code) would not be correct as there will
           // always be a delay in the data coming out of herej() and the actual pose of the robot.
           // @TODO potentially set move id according to sequence value
-          nMoveId = movej(l_motion.jJointRx, tTool, l_motion.mDesc)
+          nMoveId = movej(l_motion.jJoint, tTool, l_motion.mDesc)
         endIf
       endIf
     else
