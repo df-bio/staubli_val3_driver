@@ -2,7 +2,7 @@
 
 ## Overview
 
-This ROS-I driver was developed in Staubli's VAL 3 language for use with 6-axis
+This ROS-I driver was developed in Staubli's VAL 3 language for use with 4-axis
 Staubli robot manipulators.
 
 It is advisable to try this driver on Staubli's emulator in Staubli Robotics Suite (SRS) first.
@@ -10,7 +10,7 @@ It is advisable to try this driver on Staubli's emulator in Staubli Robotics Sui
 
 ## Requirements
 
-* Staubli 6-axis robot manipulator
+* Staubli 4-axis robot manipulator
 * Staubli CS8/CS9 controller
 * VAL 3 version s7.7.2 or greater
   * this is very important, since this implementation uses return values of `sioGet()`
