@@ -5,7 +5,12 @@
 >
   <Program name="encodeJState" access="public">
     <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
-      <Parameter name="x_jCurrPose" type="jointRx" xsi:type="element" use="reference" />
+      <Parameter
+                name="x_jCurrPose"
+                type="joint"
+                xsi:type="element"
+                use="reference"
+            />
     </Parameters>
     <Code
         ><![CDATA[begin

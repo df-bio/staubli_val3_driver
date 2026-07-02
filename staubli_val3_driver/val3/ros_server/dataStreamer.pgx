@@ -6,7 +6,7 @@
   <Program name="dataStreamer" access="public">
     <Locals>
       <Local name="l_nThrottle" type="num" xsi:type="array" size="1" />
-      <Local name="l_jCurrPose" type="jointRx" xsi:type="array" size="1" />
+      <Local name="l_jCurrPose" type="joint" xsi:type="array" size="1" />
     </Locals>
     <Code
         ><![CDATA[begin
