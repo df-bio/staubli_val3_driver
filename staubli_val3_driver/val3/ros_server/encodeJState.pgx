@@ -1,10 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.staubli.com/robotics/VAL3/Program/2"
+>
   <Program name="encodeJState" access="public">
     <Parameters xmlns="http://www.staubli.com/robotics/VAL3/Param/1">
       <Parameter name="x_jCurrPose" type="jointRx" xsi:type="element" use="reference" />
     </Parameters>
-    <Code><![CDATA[begin
+    <Code
+        ><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
   //
   // Licensed under the Apache License, Version 2.0 (the "License");

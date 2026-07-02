@@ -1,11 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Programs
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://www.staubli.com/robotics/VAL3/Program/2"
+>
   <Program name="dataStreamer" access="public">
     <Locals>
       <Local name="l_nThrottle" type="num" xsi:type="array" size="1" />
       <Local name="l_jCurrPose" type="jointRx" xsi:type="array" size="1" />
     </Locals>
-    <Code><![CDATA[begin
+    <Code
+        ><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
   //
   // Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +35,7 @@
       // encode and send ROS simple_message ID 10: joint state
       call encodeJState(l_jCurrPose)
       call sendRosMsg(siTcpIpFbk, rosJointMsg.prefix, rosJointMsg.header, rosJointMsg.body, nOutConnFlag)
-      
+
       // send Robot Status messages 5 times slower than Joint State
       if (l_nThrottle == 5)
         // fetch robot status
@@ -45,7 +49,7 @@
     else
       delay(0.1)
     endIf
-    
+
     // sequence task
     delay(0)
   endWhile
