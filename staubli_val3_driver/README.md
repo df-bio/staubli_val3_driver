@@ -113,8 +113,7 @@ if in manual mode).
 
 ### Run the industrial_robot_client node (ROS-I client)
 
-The `kinetic-devel` branch provides launch files (within the `staubli_val3_driver`
-ROS package). Simply run:
+Simply run:
 
 ```shell
 roslaunch staubli_val3_driver robot_interface_streaming.launch robot_ip:=<Controller IP address>
