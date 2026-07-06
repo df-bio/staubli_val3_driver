@@ -87,6 +87,8 @@
   // socket connection status flags: initially disconnected
   nInConnFlag = 0
   nOutConnFlag = 0
+  nCartConnFlag = 0
+  nCartMsgTime = 0
   
   // flag defining whether velocity to be overwritten to max. vel.
   bOverwriteVel = false

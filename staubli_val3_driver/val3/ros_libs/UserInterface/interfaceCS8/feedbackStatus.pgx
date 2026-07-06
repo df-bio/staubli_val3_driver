@@ -8,10 +8,10 @@
   
   // update connection status on port 11002 (feedback server)
   
-  gotoxy(scMonitor, 0,1)
-  // 11 characteres: gotoxy(12,1) to insert status
+  gotoxy(scMonitor, 0,3)
+  // 11 characters: gotoxy(12,3) to insert status
   put(scMonitor, "Port 11002:")
-  gotoxy(scMonitor, 12,1)
+  gotoxy(scMonitor, 12,3)
   switch x_nOutConnFlag
     case -1
       put(scMonitor, "connection lost")

@@ -3,6 +3,7 @@
   <Parameters version="s7.11" stackSize="5000" millimeterUnit="true" />
   <Programs>
     <Program file="ack.pgx" />
+    <Program file="cartStatus.pgx" />
     <Program file="clearScreen.pgx" />
     <Program file="debug.pgx" />
     <Program file="feedbackStatus.pgx" />
