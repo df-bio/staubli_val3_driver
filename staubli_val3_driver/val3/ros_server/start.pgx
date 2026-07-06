@@ -77,6 +77,7 @@
   sMotionTaskName = "motionTask"
   sScreenTaskName = "screenTask"
   sHtbtTaskName = "htbtTask"
+  sCartTaskName = "cartTask"
 
   // initialise TCP/IP parameters
   call initParams()
@@ -97,6 +98,8 @@
   clearBuffer(siTcpIpMotion)
   // flush buffer of outgoing socket
   clearBuffer(siTcpIpFbk)
+  // flush buffer of cartesian socket
+  clearBuffer(siTcpIpCart)
   
   // check if robot is not in emergency stop and wait until estop is reset
   if(esStatus() == 2)
@@ -135,6 +138,9 @@
   
   // create asynchronous task to receive heartbeat on port 11002
   taskCreate sHtbtTaskName, 10, recvHeartbeat()
+
+  // create asynchronous task for cartesian socket on port 11001
+  taskCreate sCartTaskName, 10, cartReceiver()
 
 end]]></Code>
   </Program>

@@ -5,6 +5,7 @@
       <Local name="l_nKey" type="num" xsi:type="array" size="1" />
       <Local name="l_nExecStatus" type="num" xsi:type="array" size="1" />
       <Local name="l_nElems" type="num" xsi:type="array" size="1" />
+      <Local name="l_nCartMsgAge" type="num" xsi:type="array" size="1" />
     </Locals>
     <Code><![CDATA[begin
   // Copyright (c) 2016, Ocado Technology - Robotics Research Team
@@ -51,6 +52,14 @@
     // update connection status on port 11000
     call libInterface:motionStatus(nInConnFlag)
     
+    // update cartesian status on port 11001
+    if (nCartMsgTime > 0)
+      l_nCartMsgAge = clock() - nCartMsgTime
+    else
+      l_nCartMsgAge = -1
+    endIf
+    call libInterface:cartStatus(nCartConnFlag, l_nCartMsgAge)
+
     // update connection status on port 11002
     call libInterface:feedbackStatus(nOutConnFlag)
     
