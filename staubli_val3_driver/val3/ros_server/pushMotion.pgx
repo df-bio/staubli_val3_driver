@@ -81,7 +81,7 @@
     endIf
     // only push motion into buffer if not a STOP message
     // and if joint positions are within software joint limits
-    // and if velocity is greater than zero (beucase movej() will not accept vel <= 0)
+    // and if velocity is greater than zero (because movej() will not accept vel <= 0)
     if(isInRange(l_mTrajPt.jJoint) and l_mTrajPt.mDesc.vel > 0)
       call libQueueFuncs:push(qTrajPtBuffer,l_mTrajPt,l_bOk)
     else
