@@ -30,6 +30,11 @@
   if (l_nRetVal!=0)
     popUpMsg("Error while setting producer timeout")
   endIf
+
+  l_nRetVal=sioCtrl(siTcpIpCart,"timeout",-1)
+  if (l_nRetVal!=0)
+    popUpMsg("Error while setting cartesian timeout")
+  endIf
 end]]></Code>
   </Program>
 </Programs>

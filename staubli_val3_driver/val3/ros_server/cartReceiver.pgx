@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Programs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.staubli.com/robotics/VAL3/Program/2">
+  <Program name="cartReceiver" access="public">
+    <Locals>
+      <Local name="l_bOk" type="bool" xsi:type="array" size="1" />
+      <Local name="l_nPrefix" type="num" xsi:type="array" size="4" />
+      <Local name="l_nHeader" type="num" xsi:type="array" size="12" />
+      <Local name="l_nBody" type="num" xsi:type="array" size="52" />
+      <Local name="l_nMsgType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nPrefixLen" type="num" xsi:type="array" size="1" />
+      <Local name="l_nCommType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nReplyCode" type="num" xsi:type="array" size="1" />
+      <Local name="l_nCartPoseType" type="num" xsi:type="array" size="1" />
+      <Local name="l_nPoseData" type="num" xsi:type="array" size="9" />
+      <Local name="l_pTarget" type="point" xsi:type="array" size="1" />
+    </Locals>
+    <Code><![CDATA[begin
+  while (true)
+    l_bOk = false
+    call recvData(siTcpIpCart, l_nPrefix, nCartConnFlag, l_bOk)
+    if (l_bOk)
+      call recvData(siTcpIpCart, l_nHeader, nCartConnFlag, l_bOk)
+    endIf
+
+    if (l_bOk)
+      fromBinary(l_nHeader, 4, "-4l", l_nMsgType)
+
+      if(l_nMsgType==nStdMsgType["CART_GET_POSE"])
+        call recvData(siTcpIpCart, l_nBody, nCartConnFlag, l_bOk)
+        if (l_bOk)
+          nCartMsgTime = clock()
+          l_pTarget = here(tTool, world)
+
+          l_nPrefixLen = 64
+          l_nCartPoseType = nStdMsgType["CART_POSE"]
+          l_nCommType = 1
+          l_nReplyCode = 1
+
+          toBinary(l_nPrefixLen, 1, "-4l", l_nPrefix)
+          toBinary(l_nCartPoseType, 1, "-4l", l_nHeader)
+          toBinary(l_nCommType, 1, "-4l", l_nHeader[4])
+          toBinary(l_nReplyCode, 1, "-4l", l_nHeader[8])
+
+          l_nPoseData[0] = 0
+          l_nPoseData[1] = l_pTarget.trsf.x * 0.001
+          l_nPoseData[2] = l_pTarget.trsf.y * 0.001
+          l_nPoseData[3] = l_pTarget.trsf.z * 0.001
+          l_nPoseData[4] = l_pTarget.trsf.rx
+          l_nPoseData[5] = l_pTarget.trsf.ry
+          l_nPoseData[6] = l_pTarget.trsf.rz
+          l_nPoseData[7] = 0
+          l_nPoseData[8] = 0
+
+          toBinary(l_nPoseData[0], 1, "-4l", l_nBody)
+          toBinary(l_nPoseData[1], 1, "4.0l", l_nBody[4])
+          toBinary(l_nPoseData[2], 1, "4.0l", l_nBody[8])
+          toBinary(l_nPoseData[3], 1, "4.0l", l_nBody[12])
+          toBinary(l_nPoseData[4], 1, "4.0l", l_nBody[16])
+          toBinary(l_nPoseData[5], 1, "4.0l", l_nBody[20])
+          toBinary(l_nPoseData[6], 1, "4.0l", l_nBody[24])
+          toBinary(l_nPoseData[7], 1, "4.0l", l_nBody[28])
+          toBinary(l_nPoseData[8], 1, "4.0l", l_nBody[32])
+
+          call sendData(siTcpIpCart, l_nPrefix, nCartConnFlag)
+          call sendData(siTcpIpCart, l_nHeader, nCartConnFlag)
+          call sendData(siTcpIpCart, l_nBody, nCartConnFlag)
+        endIf
+      endIf
+    endIf
+
+    delay(0)
+  endWhile
+end]]></Code>
+  </Program>
+</Programs>
