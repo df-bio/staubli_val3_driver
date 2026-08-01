@@ -10,5 +10,5 @@
 
   <!-- reuse generic industrial robot client interface streaming node -->
   <node pkg="industrial_robot_client" type="motion_streaming_interface"
-    name="motion_streaming_interface" />
+    name="motion_streaming_interface" respawn="true" respawn_delay="2.0" />
 </launch>
