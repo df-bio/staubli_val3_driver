@@ -10,5 +10,5 @@
   <rosparam param="controller_joint_names">[revo1, revo2, prism3, revo4]</rosparam>
 
   <!-- reuse generic industrial robot client state node -->
-  <node pkg="industrial_robot_client" type="robot_state" name="robot_state" />
+  <node pkg="industrial_robot_client" type="robot_state" name="robot_state" respawn="true" respawn_delay="2.0" />
 </launch>

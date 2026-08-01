@@ -41,5 +41,5 @@
        high-level robot control
   -->
   <node pkg="industrial_robot_client" type="joint_trajectory_action"
-    name="joint_trajectory_action" />
+    name="joint_trajectory_action" respawn="true" respawn_delay="2.0" />
 </launch>
